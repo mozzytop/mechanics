@@ -14,9 +14,9 @@ templates = Jinja2Templates(directory="app/templates")
 @router.get("/codes", response_class=HTMLResponse)
 async def code_lookup_form(request: Request):
     return templates.TemplateResponse(
+        request,
         "codes.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "warnings": missing_keys(),
             "code_info": None,
@@ -63,9 +63,9 @@ async def code_lookup_submit(
         videos = await youtube.search_repair_videos(spec, code_clean)
 
     return templates.TemplateResponse(
+        request,
         "codes.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "warnings": missing_keys(),
             "code": code_clean,
