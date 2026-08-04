@@ -1,0 +1,1103 @@
+{
+  "P0100": {
+    "likely_causes": [
+      "Dirty or failing MAF sensor",
+      "Vacuum leak",
+      "Damaged wiring/connector"
+    ],
+    "part_categories": [
+      "mass air flow sensor",
+      "intake air duct"
+    ],
+    "description": "Mass or Volume Air Flow Circuit Malfunction"
+  },
+  "P0101": {
+    "likely_causes": [
+      "Dirty MAF sensor",
+      "Air filter clogged",
+      "Vacuum leak"
+    ],
+    "part_categories": [
+      "mass air flow sensor",
+      "engine air filter"
+    ],
+    "description": "Mass or Volume Air Flow Circuit Range/Performance Problem"
+  },
+  "P0102": {
+    "likely_causes": [
+      "MAF sensor low input",
+      "Wiring short to ground",
+      "Dirty sensor element"
+    ],
+    "part_categories": [
+      "mass air flow sensor"
+    ],
+    "description": "Mass or Volume Air Flow Circuit Low Input"
+  },
+  "P0103": {
+    "likely_causes": [
+      "MAF sensor high input",
+      "Wiring short to power"
+    ],
+    "part_categories": [
+      "mass air flow sensor"
+    ],
+    "description": "Mass or Volume Air Flow Circuit High Input"
+  },
+  "P0106": {
+    "likely_causes": [
+      "MAP sensor malfunction",
+      "Vacuum hose leak/kink"
+    ],
+    "part_categories": [
+      "manifold absolute pressure sensor",
+      "vacuum hose"
+    ],
+    "description": "Manifold Absolute Pressure/Barometric Pressure Circuit Range/Performance"
+  },
+  "P0107": {
+    "likely_causes": [
+      "MAP sensor low input",
+      "Vacuum leak"
+    ],
+    "part_categories": [
+      "manifold absolute pressure sensor"
+    ],
+    "description": "Manifold Absolute Pressure/Barometric Pressure Circuit Low Input"
+  },
+  "P0108": {
+    "likely_causes": [
+      "MAP sensor high input",
+      "Wiring issue"
+    ],
+    "part_categories": [
+      "manifold absolute pressure sensor"
+    ],
+    "description": "Manifold Absolute Pressure/Barometric Pressure Circuit High Input"
+  },
+  "P0110": {
+    "likely_causes": [
+      "Intake air temp sensor circuit fault"
+    ],
+    "part_categories": [
+      "intake air temperature sensor"
+    ],
+    "description": "Intake Air Temperature Circuit Malfunction"
+  },
+  "P0113": {
+    "likely_causes": [
+      "IAT sensor high input",
+      "Wiring open circuit"
+    ],
+    "part_categories": [
+      "intake air temperature sensor"
+    ],
+    "description": "Intake Air Temperature Circuit High Input"
+  },
+  "P0116": {
+    "likely_causes": [
+      "Engine coolant temp sensor performance issue",
+      "Low coolant"
+    ],
+    "part_categories": [
+      "engine coolant temperature sensor",
+      "coolant"
+    ],
+    "description": "Engine Coolant Temperature Circuit Range/Performance"
+  },
+  "P0117": {
+    "likely_causes": [
+      "ECT sensor low input, shorted circuit"
+    ],
+    "part_categories": [
+      "engine coolant temperature sensor"
+    ],
+    "description": "Engine Coolant Temperature Circuit Low Input"
+  },
+  "P0118": {
+    "likely_causes": [
+      "ECT sensor high input, open circuit"
+    ],
+    "part_categories": [
+      "engine coolant temperature sensor"
+    ],
+    "description": "Engine Coolant Temperature Circuit High Input"
+  },
+  "P0120": {
+    "likely_causes": [
+      "Throttle position sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "throttle position sensor"
+    ],
+    "description": "Throttle/Pedal Position Sensor/Switch A Circuit Malfunction"
+  },
+  "P0121": {
+    "likely_causes": [
+      "TPS range/performance problem"
+    ],
+    "part_categories": [
+      "throttle position sensor",
+      "electronic throttle body"
+    ],
+    "description": "Throttle/Pedal Position Sensor/Switch A Circuit Range/Performance"
+  },
+  "P0122": {
+    "likely_causes": [
+      "TPS low input"
+    ],
+    "part_categories": [
+      "throttle position sensor"
+    ],
+    "description": "Throttle/Pedal Position Sensor/Switch A Circuit Low Input"
+  },
+  "P0123": {
+    "likely_causes": [
+      "TPS high input"
+    ],
+    "part_categories": [
+      "throttle position sensor"
+    ],
+    "description": "Throttle/Pedal Position Sensor/Switch A Circuit High Input"
+  },
+  "P0125": {
+    "likely_causes": [
+      "Engine not reaching closed loop temp",
+      "Thermostat stuck open",
+      "ECT sensor fault"
+    ],
+    "part_categories": [
+      "thermostat",
+      "engine coolant temperature sensor"
+    ],
+    "description": "Insufficient Coolant Temperature for Closed Loop Fuel Control"
+  },
+  "P0128": {
+    "likely_causes": [
+      "Thermostat stuck open, coolant not reaching operating temp"
+    ],
+    "part_categories": [
+      "thermostat"
+    ],
+    "description": "Coolant Thermostat (Coolant Temperature Below Thermostat Regulating Temperature)"
+  },
+  "P0130": {
+    "likely_causes": [
+      "Upstream O2 sensor circuit malfunction (Bank 1)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Malfunction (Bank 1, Sensor 1)"
+  },
+  "P0131": {
+    "likely_causes": [
+      "Upstream O2 sensor low voltage (Bank 1)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Low Voltage (Bank 1, Sensor 1)"
+  },
+  "P0132": {
+    "likely_causes": [
+      "Upstream O2 sensor high voltage (Bank 1)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit High Voltage (Bank 1, Sensor 1)"
+  },
+  "P0133": {
+    "likely_causes": [
+      "Upstream O2 sensor slow response (Bank 1)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Slow Response (Bank 1, Sensor 1)"
+  },
+  "P0134": {
+    "likely_causes": [
+      "Upstream O2 sensor no activity detected"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit No Activity Detected (Bank 1, Sensor 1)"
+  },
+  "P0135": {
+    "likely_causes": [
+      "Upstream O2 sensor heater circuit malfunction (Bank 1)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Heater Circuit Malfunction (Bank 1, Sensor 1)"
+  },
+  "P0136": {
+    "likely_causes": [
+      "Downstream O2 sensor circuit malfunction (Bank 1)"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Malfunction (Bank 1, Sensor 2)"
+  },
+  "P0137": {
+    "likely_causes": [
+      "Downstream O2 sensor low voltage"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Low Voltage (Bank 1, Sensor 2)"
+  },
+  "P0138": {
+    "likely_causes": [
+      "Downstream O2 sensor high voltage"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit High Voltage (Bank 1, Sensor 2)"
+  },
+  "P0140": {
+    "likely_causes": [
+      "Downstream O2 sensor no activity detected"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit No Activity Detected (Bank 1, Sensor 2)"
+  },
+  "P0141": {
+    "likely_causes": [
+      "Downstream O2 sensor heater circuit malfunction (Bank 1)"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Heater Circuit Malfunction (Bank 1, Sensor 2)"
+  },
+  "P0150": {
+    "likely_causes": [
+      "Upstream O2 sensor circuit malfunction (Bank 2)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Circuit Malfunction (Bank 2, Sensor 1)"
+  },
+  "P0155": {
+    "likely_causes": [
+      "Upstream O2 sensor heater circuit malfunction (Bank 2)"
+    ],
+    "part_categories": [
+      "upstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Heater Circuit Malfunction (Bank 2, Sensor 1)"
+  },
+  "P0161": {
+    "likely_causes": [
+      "Downstream O2 sensor heater circuit malfunction (Bank 2)"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor"
+    ],
+    "description": "O2 Sensor Heater Circuit Malfunction (Bank 2, Sensor 2)"
+  },
+  "P0170": {
+    "likely_causes": [
+      "Fuel trim malfunction (Bank 1)",
+      "Vacuum leak",
+      "Fuel injector issue"
+    ],
+    "part_categories": [
+      "fuel injector",
+      "upstream oxygen sensor"
+    ],
+    "description": "Fuel Trim Malfunction (Bank 1)"
+  },
+  "P0171": {
+    "likely_causes": [
+      "System too lean (Bank 1)",
+      "Vacuum leak",
+      "Dirty MAF sensor",
+      "Weak fuel pump"
+    ],
+    "part_categories": [
+      "mass air flow sensor",
+      "fuel pump",
+      "vacuum hose"
+    ],
+    "description": "System Too Lean (Bank 1)"
+  },
+  "P0172": {
+    "likely_causes": [
+      "System too rich (Bank 1)",
+      "Leaking fuel injector",
+      "Faulty MAF sensor"
+    ],
+    "part_categories": [
+      "fuel injector",
+      "mass air flow sensor"
+    ],
+    "description": "System Too Rich (Bank 1)"
+  },
+  "P0174": {
+    "likely_causes": [
+      "System too lean (Bank 2)",
+      "Vacuum leak"
+    ],
+    "part_categories": [
+      "mass air flow sensor",
+      "vacuum hose"
+    ],
+    "description": "System Too Lean (Bank 2)"
+  },
+  "P0175": {
+    "likely_causes": [
+      "System too rich (Bank 2)"
+    ],
+    "part_categories": [
+      "fuel injector"
+    ],
+    "description": "System Too Rich (Bank 2)"
+  },
+  "P0181": {
+    "likely_causes": [
+      "Fuel temperature sensor circuit range/performance"
+    ],
+    "part_categories": [
+      "fuel temperature sensor"
+    ],
+    "description": "Fuel Temperature Sensor A Circuit Range/Performance"
+  },
+  "P0190": {
+    "likely_causes": [
+      "Fuel rail pressure sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "fuel rail pressure sensor"
+    ],
+    "description": "Fuel Rail Pressure Sensor Circuit Malfunction"
+  },
+  "P0200": {
+    "likely_causes": [
+      "Injector circuit malfunction"
+    ],
+    "part_categories": [
+      "fuel injector"
+    ],
+    "description": "Injector Circuit Malfunction"
+  },
+  "P0201": {
+    "likely_causes": [
+      "Injector 1 circuit malfunction"
+    ],
+    "part_categories": [
+      "fuel injector"
+    ],
+    "description": "Injector Circuit Malfunction - Cylinder 1"
+  },
+  "P0217": {
+    "likely_causes": [
+      "Engine overheating",
+      "Low coolant",
+      "Failing water pump",
+      "Bad thermostat"
+    ],
+    "part_categories": [
+      "water pump",
+      "thermostat",
+      "coolant"
+    ],
+    "description": "Engine Coolant Over Temperature Condition"
+  },
+  "P0230": {
+    "likely_causes": [
+      "Fuel pump primary circuit malfunction"
+    ],
+    "part_categories": [
+      "fuel pump",
+      "fuel pump relay"
+    ],
+    "description": "Fuel Pump Primary Circuit Malfunction"
+  },
+  "P0300": {
+    "likely_causes": [
+      "Random/multiple cylinder misfire",
+      "Worn spark plugs",
+      "Failing ignition coils",
+      "Vacuum leak"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Random/Multiple Cylinder Misfire Detected"
+  },
+  "P0301": {
+    "likely_causes": [
+      "Cylinder 1 misfire",
+      "Bad spark plug or coil",
+      "Low compression"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil",
+      "fuel injector"
+    ],
+    "description": "Cylinder 1 Misfire Detected"
+  },
+  "P0302": {
+    "likely_causes": [
+      "Cylinder 2 misfire"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Cylinder 2 Misfire Detected"
+  },
+  "P0303": {
+    "likely_causes": [
+      "Cylinder 3 misfire"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Cylinder 3 Misfire Detected"
+  },
+  "P0304": {
+    "likely_causes": [
+      "Cylinder 4 misfire"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Cylinder 4 Misfire Detected"
+  },
+  "P0305": {
+    "likely_causes": [
+      "Cylinder 5 misfire"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Cylinder 5 Misfire Detected"
+  },
+  "P0306": {
+    "likely_causes": [
+      "Cylinder 6 misfire"
+    ],
+    "part_categories": [
+      "spark plugs",
+      "ignition coil"
+    ],
+    "description": "Cylinder 6 Misfire Detected"
+  },
+  "P0325": {
+    "likely_causes": [
+      "Knock sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "knock sensor"
+    ],
+    "description": "Knock Sensor 1 Circuit Malfunction (Bank 1 or Single Sensor)"
+  },
+  "P0330": {
+    "likely_causes": [
+      "Knock sensor circuit malfunction (Bank 2)"
+    ],
+    "part_categories": [
+      "knock sensor"
+    ],
+    "description": "Knock Sensor 2 Circuit Malfunction (Bank 2)"
+  },
+  "P0335": {
+    "likely_causes": [
+      "Crankshaft position sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "crankshaft position sensor"
+    ],
+    "description": "Crankshaft Position Sensor A Circuit Malfunction"
+  },
+  "P0339": {
+    "likely_causes": [
+      "Crankshaft position sensor intermittent signal"
+    ],
+    "part_categories": [
+      "crankshaft position sensor"
+    ],
+    "description": "Crankshaft Position Sensor A Circuit Intermittent"
+  },
+  "P0340": {
+    "likely_causes": [
+      "Camshaft position sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "camshaft position sensor"
+    ],
+    "description": "Camshaft Position Sensor A Circuit Malfunction"
+  },
+  "P0341": {
+    "likely_causes": [
+      "Camshaft position sensor range/performance"
+    ],
+    "part_categories": [
+      "camshaft position sensor"
+    ],
+    "description": "Camshaft Position Sensor A Circuit Range/Performance"
+  },
+  "P0350": {
+    "likely_causes": [
+      "Ignition coil primary/secondary circuit malfunction"
+    ],
+    "part_categories": [
+      "ignition coil"
+    ],
+    "description": "Ignition Coil Primary/Secondary Circuit Malfunction"
+  },
+  "P0351": {
+    "likely_causes": [
+      "Ignition coil A circuit malfunction"
+    ],
+    "part_categories": [
+      "ignition coil"
+    ],
+    "description": "Ignition Coil A Primary/Secondary Circuit Malfunction"
+  },
+  "P0352": {
+    "likely_causes": [
+      "Ignition coil B circuit malfunction"
+    ],
+    "part_categories": [
+      "ignition coil"
+    ],
+    "description": "Ignition Coil B Primary/Secondary Circuit Malfunction"
+  },
+  "P0400": {
+    "likely_causes": [
+      "EGR flow malfunction",
+      "Clogged EGR passage"
+    ],
+    "part_categories": [
+      "EGR valve"
+    ],
+    "description": "Exhaust Gas Recirculation Flow Malfunction"
+  },
+  "P0401": {
+    "likely_causes": [
+      "EGR flow insufficient detected",
+      "Carbon-clogged EGR valve/passages"
+    ],
+    "part_categories": [
+      "EGR valve"
+    ],
+    "description": "Exhaust Gas Recirculation Flow Insufficient Detected"
+  },
+  "P0402": {
+    "likely_causes": [
+      "EGR flow excessive detected"
+    ],
+    "part_categories": [
+      "EGR valve"
+    ],
+    "description": "Exhaust Gas Recirculation Flow Excessive Detected"
+  },
+  "P0404": {
+    "likely_causes": [
+      "EGR circuit range/performance"
+    ],
+    "part_categories": [
+      "EGR valve"
+    ],
+    "description": "Exhaust Gas Recirculation Circuit Range/Performance"
+  },
+  "P0410": {
+    "likely_causes": [
+      "Secondary air injection system malfunction"
+    ],
+    "part_categories": [
+      "secondary air injection pump"
+    ],
+    "description": "Secondary Air Injection System Malfunction"
+  },
+  "P0420": {
+    "likely_causes": [
+      "Catalytic converter efficiency below threshold (Bank 1)",
+      "Failing downstream O2 sensor",
+      "Exhaust leak"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor",
+      "catalytic converter"
+    ],
+    "description": "Catalyst System Efficiency Below Threshold (Bank 1)"
+  },
+  "P0430": {
+    "likely_causes": [
+      "Catalytic converter efficiency below threshold (Bank 2)"
+    ],
+    "part_categories": [
+      "downstream oxygen sensor",
+      "catalytic converter"
+    ],
+    "description": "Catalyst System Efficiency Below Threshold (Bank 2)"
+  },
+  "P0440": {
+    "likely_causes": [
+      "EVAP system malfunction",
+      "Loose or damaged gas cap"
+    ],
+    "part_categories": [
+      "fuel cap",
+      "EVAP purge valve"
+    ],
+    "description": "Evaporative Emission Control System Malfunction"
+  },
+  "P0441": {
+    "likely_causes": [
+      "EVAP incorrect purge flow"
+    ],
+    "part_categories": [
+      "EVAP purge valve"
+    ],
+    "description": "Evaporative Emission Control System Incorrect Purge Flow"
+  },
+  "P0442": {
+    "likely_causes": [
+      "EVAP small leak detected"
+    ],
+    "part_categories": [
+      "fuel cap",
+      "EVAP purge valve",
+      "EVAP hose"
+    ],
+    "description": "Evaporative Emission Control System Leak Detected (small leak)"
+  },
+  "P0446": {
+    "likely_causes": [
+      "EVAP vent control circuit malfunction"
+    ],
+    "part_categories": [
+      "EVAP vent valve"
+    ],
+    "description": "Evaporative Emission Control System Vent Control Circuit Malfunction"
+  },
+  "P0451": {
+    "likely_causes": [
+      "EVAP pressure sensor range/performance"
+    ],
+    "part_categories": [
+      "EVAP pressure sensor"
+    ],
+    "description": "Evaporative Emission Control System Pressure Sensor Range/Performance"
+  },
+  "P0455": {
+    "likely_causes": [
+      "EVAP large leak detected",
+      "Missing/loose gas cap"
+    ],
+    "part_categories": [
+      "fuel cap",
+      "EVAP purge valve"
+    ],
+    "description": "Evaporative Emission Control System Leak Detected (large leak)"
+  },
+  "P0456": {
+    "description": "Evaporative Emission Control System Leak Detected (very small leak)",
+    "likely_causes": [
+      "EVAP very small leak detected"
+    ],
+    "part_categories": [
+      "fuel cap",
+      "EVAP hose"
+    ]
+  },
+  "P0460": {
+    "likely_causes": [
+      "Fuel level sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "fuel level sensor"
+    ],
+    "description": "Fuel Level Sensor Circuit Malfunction"
+  },
+  "P0500": {
+    "likely_causes": [
+      "Vehicle speed sensor malfunction"
+    ],
+    "part_categories": [
+      "vehicle speed sensor"
+    ],
+    "description": "Vehicle Speed Sensor Malfunction"
+  },
+  "P0505": {
+    "likely_causes": [
+      "Idle control system malfunction",
+      "Dirty throttle body"
+    ],
+    "part_categories": [
+      "idle air control valve",
+      "throttle body"
+    ],
+    "description": "Idle Control System Malfunction"
+  },
+  "P0506": {
+    "likely_causes": [
+      "Idle speed lower than expected",
+      "Dirty throttle body/IAC"
+    ],
+    "part_categories": [
+      "idle air control valve",
+      "throttle body"
+    ],
+    "description": "Idle Control System RPM Lower Than Expected"
+  },
+  "P0507": {
+    "likely_causes": [
+      "Idle speed higher than expected",
+      "Vacuum leak"
+    ],
+    "part_categories": [
+      "idle air control valve",
+      "vacuum hose"
+    ],
+    "description": "Idle Control System RPM Higher Than Expected"
+  },
+  "P0562": {
+    "likely_causes": [
+      "System voltage low",
+      "Weak battery",
+      "Failing alternator"
+    ],
+    "part_categories": [
+      "battery",
+      "alternator"
+    ],
+    "description": "System Voltage Low"
+  },
+  "P0563": {
+    "likely_causes": [
+      "System voltage high",
+      "Overcharging alternator"
+    ],
+    "part_categories": [
+      "alternator",
+      "voltage regulator"
+    ],
+    "description": "System Voltage High"
+  },
+  "P0600": {
+    "likely_causes": [
+      "Serial communication link malfunction"
+    ],
+    "part_categories": [
+      "PCM/ECM"
+    ],
+    "description": "Serial Communication Link Malfunction"
+  },
+  "P0601": {
+    "likely_causes": [
+      "Internal control module memory checksum error"
+    ],
+    "part_categories": [
+      "PCM/ECM"
+    ],
+    "description": "Internal Control Module Memory Check Sum Error"
+  },
+  "P0603": {
+    "likely_causes": [
+      "Internal control module keep-alive memory error"
+    ],
+    "part_categories": [
+      "PCM/ECM"
+    ],
+    "description": "Internal Control Module Keep Alive Memory (KAM) Error"
+  },
+  "P0605": {
+    "likely_causes": [
+      "Internal control module ROM error"
+    ],
+    "part_categories": [
+      "PCM/ECM"
+    ],
+    "description": "Internal Control Module Read Only Memory (ROM) Error"
+  },
+  "P0620": {
+    "likely_causes": [
+      "Generator control circuit malfunction"
+    ],
+    "part_categories": [
+      "alternator"
+    ],
+    "description": "Generator Control Circuit Malfunction"
+  },
+  "P0630": {
+    "likely_causes": [
+      "VIN not programmed or mismatch in PCM"
+    ],
+    "part_categories": [
+      "PCM/ECM"
+    ],
+    "description": "VIN Not Programmed or Incompatible - ECM/PCM"
+  },
+  "P0641": {
+    "likely_causes": [
+      "Sensor reference voltage circuit A open"
+    ],
+    "part_categories": [
+      "wiring harness"
+    ],
+    "description": "Sensor Reference Voltage 'A' Circuit/Open"
+  },
+  "P0650": {
+    "likely_causes": [
+      "Malfunction indicator lamp control circuit malfunction"
+    ],
+    "part_categories": [
+      "instrument cluster",
+      "wiring harness"
+    ],
+    "description": "Malfunction Indicator Lamp (MIL) Control Circuit Malfunction"
+  },
+  "P0700": {
+    "likely_causes": [
+      "Transmission control system malfunction (see TCM-stored code)"
+    ],
+    "part_categories": [
+      "transmission control module"
+    ],
+    "description": "Transmission Control System Malfunction"
+  },
+  "P0705": {
+    "likely_causes": [
+      "Transmission range sensor circuit malfunction (PRNDL)"
+    ],
+    "part_categories": [
+      "transmission range sensor"
+    ],
+    "description": "Transmission Range Sensor Circuit Malfunction (PRNDL Input)"
+  },
+  "P0715": {
+    "likely_causes": [
+      "Input/turbine speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "input speed sensor"
+    ],
+    "description": "Input/Turbine Speed Sensor Circuit Malfunction"
+  },
+  "P0720": {
+    "likely_causes": [
+      "Output speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "output speed sensor"
+    ],
+    "description": "Output Speed Sensor Circuit Malfunction"
+  },
+  "P0730": {
+    "likely_causes": [
+      "Incorrect gear ratio",
+      "Low transmission fluid",
+      "Worn clutch packs"
+    ],
+    "part_categories": [
+      "transmission fluid",
+      "transmission filter"
+    ],
+    "description": "Incorrect Gear Ratio"
+  },
+  "P0740": {
+    "likely_causes": [
+      "Torque converter clutch circuit malfunction"
+    ],
+    "part_categories": [
+      "torque converter"
+    ],
+    "description": "Torque Converter Clutch Circuit Malfunction"
+  },
+  "P0741": {
+    "likely_causes": [
+      "Torque converter clutch stuck off"
+    ],
+    "part_categories": [
+      "torque converter"
+    ],
+    "description": "Torque Converter Clutch Circuit Performance or Stuck Off"
+  },
+  "P0750": {
+    "likely_causes": [
+      "Shift solenoid A malfunction"
+    ],
+    "part_categories": [
+      "shift solenoid"
+    ],
+    "description": "Shift Solenoid A Malfunction"
+  },
+  "P0755": {
+    "likely_causes": [
+      "Shift solenoid B malfunction"
+    ],
+    "part_categories": [
+      "shift solenoid"
+    ],
+    "description": "Shift Solenoid B Malfunction"
+  },
+  "P0760": {
+    "likely_causes": [
+      "Shift solenoid C malfunction"
+    ],
+    "part_categories": [
+      "shift solenoid"
+    ],
+    "description": "Shift Solenoid C Malfunction"
+  },
+  "P1000": {
+    "likely_causes": [
+      "OBD-II monitor testing not complete (drive cycle incomplete)"
+    ],
+    "part_categories": [],
+    "description": "OBD Systems Readiness Test Not Complete"
+  },
+  "P0011": {
+    "likely_causes": [
+      "Intake camshaft timing over-advanced (Bank 1)",
+      "VVT solenoid/actuator fault",
+      "Low oil level"
+    ],
+    "part_categories": [
+      "variable valve timing solenoid",
+      "engine oil"
+    ],
+    "description": "'A' Camshaft Position Timing Over-Advanced or System Performance (Bank 1)"
+  },
+  "P0021": {
+    "likely_causes": [
+      "Intake camshaft timing over-advanced (Bank 2)"
+    ],
+    "part_categories": [
+      "variable valve timing solenoid"
+    ],
+    "description": "'A' Camshaft Position Timing Over-Advanced or System Performance (Bank 2)"
+  },
+  "P0087": {
+    "likely_causes": [
+      "Fuel rail/system pressure too low",
+      "Failing high pressure fuel pump"
+    ],
+    "part_categories": [
+      "fuel pump",
+      "fuel filter"
+    ],
+    "description": "Fuel Rail/System Pressure - Too Low"
+  },
+  "P0088": {
+    "likely_causes": [
+      "Fuel rail/system pressure too high"
+    ],
+    "part_categories": [
+      "fuel pressure regulator"
+    ],
+    "description": "Fuel Rail/System Pressure - Too High"
+  },
+  "C0035": {
+    "likely_causes": [
+      "Left front wheel speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "wheel speed sensor"
+    ],
+    "description": "Left Front Wheel Speed Sensor Circuit Malfunction"
+  },
+  "C0040": {
+    "likely_causes": [
+      "Right front wheel speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "wheel speed sensor"
+    ],
+    "description": "Right Front Wheel Speed Sensor Circuit Malfunction"
+  },
+  "C0045": {
+    "likely_causes": [
+      "Left rear wheel speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "wheel speed sensor"
+    ],
+    "description": "Left Rear Wheel Speed Sensor Circuit Malfunction"
+  },
+  "C0050": {
+    "likely_causes": [
+      "Right rear wheel speed sensor circuit malfunction"
+    ],
+    "part_categories": [
+      "wheel speed sensor"
+    ],
+    "description": "Right Rear Wheel Speed Sensor Circuit Malfunction"
+  },
+  "C0110": {
+    "likely_causes": [
+      "ABS pump motor circuit malfunction"
+    ],
+    "part_categories": [
+      "ABS pump/module"
+    ],
+    "description": "Pump Motor Circuit Malfunction"
+  },
+  "U0100": {
+    "likely_causes": [
+      "Lost communication with ECM/PCM",
+      "Wiring/connector fault"
+    ],
+    "part_categories": [
+      "wiring harness"
+    ],
+    "description": "Lost Communication With ECM/PCM 'A'"
+  },
+  "U0101": {
+    "likely_causes": [
+      "Lost communication with TCM"
+    ],
+    "part_categories": [
+      "wiring harness"
+    ],
+    "description": "Lost Communication With TCM"
+  },
+  "U0121": {
+    "likely_causes": [
+      "Lost communication with ABS control module"
+    ],
+    "part_categories": [
+      "wiring harness"
+    ],
+    "description": "Lost Communication With Anti-Lock Brake System (ABS) Control Module"
+  },
+  "B0001": {
+    "likely_causes": [
+      "Driver frontal stage 1 deployment control circuit fault"
+    ],
+    "part_categories": [
+      "airbag module"
+    ],
+    "description": "Driver Frontal Stage 1 Deployment Control"
+  },
+  "B1000": {
+    "likely_causes": [
+      "ECU malfunction (body control)"
+    ],
+    "part_categories": [
+      "body control module"
+    ],
+    "description": "ECU Malfunction"
+  }
+}

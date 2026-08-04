@@ -1,0 +1,9 @@
+.env
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+data/virtual_mechanic.db
+.DS_Store
+*.egg-info/

@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% import "_vehicle_form.html" as vf %}
+
+{% block title %}Part Lookup — Virtual Mechanic{% endblock %}
+
+{% block content %}
+  <h1>Part Lookup</h1>
+  <p class="subtitle">Find and compare pricing/availability for a part across online and local sources.</p>
+
+  <form method="post" action="/" class="lookup-form">
+    {{ vf.vehicle_fields(saved_vehicles, prefill) }}
+
+    <div class="field-group">
+      <label for="part">Part name or part number</label>
+      <input type="text" id="primary-input" name="part" placeholder="e.g. downstream oxygen sensor, or 234-4234"
+             value="{{ prefill.part if prefill else '' }}" required>
+    </div>
+
+    <div class="field-group">
+      <label for="location">Your location</label>
+      <input type="text" id="location" name="location" placeholder="City, State or ZIP"
+             value="{{ location if location else default_location }}">
+    </div>
+
+    <button type="submit" class="btn-primary">Search</button>
+  </form>
+
+  {% if error %}
+    <div class="banner banner-error">{{ error }}</div>
+  {% endif %}
+
+  {% if resolved_vehicle %}
+    <div class="resolved-vehicle">
+      Searching for: <strong>{{ resolved_vehicle.year }} {{ resolved_vehicle.make }}
+      {{ resolved_vehicle.model }} {{ resolved_vehicle.trim }} {{ resolved_vehicle.engine }}</strong>
+      &mdash; part: <strong>{{ part }}</strong>
+      {% if location %} near <strong>{{ location }}</strong>{% endif %}
+    </div>
+  {% endif %}
+
+  {% if results %}
+    <div class="results-note">Results as of last search — verify before purchase.</div>
+    <div class="table-wrap">
+      <table class="results-table">
+        <thead>
+          <tr>
+            <th>Source</th>
+            <th>Type</th>
+            <th>Part</th>
+            <th>Price</th>
+            <th>In Stock</th>
+            <th>Rating</th>
+            <th>Distance</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for r in results %}
+            <tr>
+              <td>{{ r.source_name }}</td>
+              <td><span class="pill pill-{{ r.source_type }}">{{ r.source_type }}</span></td>
+              <td>{{ r.part_description }}</td>
+              <td>{{ r.price }}</td>
+              <td>{{ r.in_stock }}</td>
+              <td>{{ r.rating if r.rating is not none else '—' }}</td>
+              <td>{{ (r.distance_miles ~ ' mi') if r.distance_miles is not none else '—' }}</td>
+              <td><a href="{{ r.url }}" target="_blank" rel="noopener">View</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Virtual Mechanic{% endblock %}</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/">🔧 Virtual Mechanic</a>
+    <nav>
+      <a href="/" class="{% if request.url.path == '/' %}active{% endif %}">Part Lookup</a>
+      <a href="/codes" class="{% if request.url.path == '/codes' %}active{% endif %}">Code Lookup</a>
+      <a href="/garage" class="{% if request.url.path == '/garage' %}active{% endif %}">My Garage</a>
+    </nav>
+  </header>
+
+  {% if warnings %}
+    <div class="banner banner-warn">
+      {% for w in warnings %}<div>⚠️ {{ w }}</div>{% endfor %}
+    </div>
+  {% endif %}
+
+  <main class="container">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer">
+    Personal-use tool. Prices/availability are search-time snapshots — verify before purchase.
+  </footer>
+</body>
+</html>

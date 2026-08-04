@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}My Garage — Virtual Mechanic{% endblock %}
+
+{% block content %}
+  <h1>My Garage</h1>
+  <p class="subtitle">Save your vehicles once so you never have to re-enter or re-decode a VIN again.</p>
+
+  {% if error %}
+    <div class="banner banner-error">{{ error }}</div>
+  {% endif %}
+
+  {% if resolved %}
+    <div class="confirm-card">
+      <h2>Confirm this vehicle</h2>
+      <p>
+        <strong>
+          {{ resolved.year }} {{ resolved.make }} {{ resolved.model }} {{ resolved.trim }}{% if resolved.engine %}, {{ resolved.engine }}{% endif %}
+        </strong>
+      </p>
+      {% if resolved.vin %}<p class="muted">VIN: {{ resolved.vin }}</p>{% endif %}
+      {% if resolved.verified_by_nhtsa %}
+        <p class="muted">✅ Verified against NHTSA vPIC</p>
+      {% else %}
+        <p class="muted">⚠️ Could not fully verify this combination against NHTSA — double check before saving.</p>
+      {% endif %}
+
+      <form method="post" action="/garage/save" class="save-form">
+        <input type="hidden" name="resolved_json" value='{{ resolved | tojson }}'>
+        <input type="hidden" name="vin" value="{{ resolved.vin or '' }}">
+        <label for="nickname">Nickname</label>
+        <input type="text" id="nickname" name="nickname" placeholder="e.g. My Civic" required>
+        <button type="submit" class="btn-primary">Save this vehicle</button>
+      </form>
+    </div>
+  {% else %}
+    <div class="add-vehicle-card">
+      <h2>Add a new vehicle</h2>
+      <form method="post" action="/garage/resolve" class="add-form">
+        <div class="entry-toggle">
+          <label><input type="radio" name="entry_mode" value="vin" checked onchange="toggleAddMode()"> VIN</label>
+          <label><input type="radio" name="entry_mode" value="ymm" onchange="toggleAddMode()"> Year / Make / Model</label>
+        </div>
+
+        <div id="add-vin-fields" class="field-group">
+          <label for="vin">VIN</label>
+          <input type="text" id="vin" name="vin" maxlength="17" placeholder="e.g. 2HGES16575H123456">
+        </div>
+
+        <div id="add-ymm-fields" class="field-group" style="display:none;">
+          <div class="field-row">
+            <div><label for="year">Year</label><input type="text" id="year" name="year" placeholder="2015"></div>
+            <div><label for="make">Make</label><input type="text" id="make" name="make" placeholder="Honda"></div>
+            <div><label for="model">Model</label><input type="text" id="model" name="model" placeholder="Civic"></div>
+          </div>
+          <div class="field-row">
+            <div><label for="trim">Trim</label><input type="text" id="trim" name="trim" placeholder="LX"></div>
+            <div><label for="engine">Engine</label><input type="text" id="engine" name="engine" placeholder="1.8L R18Z1"></div>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary">Resolve vehicle</button>
+      </form>
+    </div>
+
+    <script>
+      function toggleAddMode() {
+        const mode = document.querySelector('input[name="entry_mode"]:checked').value;
+        document.getElementById('add-vin-fields').style.display = mode === 'vin' ? 'block' : 'none';
+        document.getElementById('add-ymm-fields').style.display = mode === 'ymm' ? 'block' : 'none';
+      }
+    </script>
+  {% endif %}
+
+  <h2>Saved vehicles</h2>
+  {% if saved_vehicles %}
+    <div class="garage-grid">
+      {% for v in saved_vehicles %}
+        <div class="garage-vehicle-card">
+          <div class="garage-vehicle-nickname">🚗 {{ v.nickname }}</div>
+          <div class="muted">{{ v.year }} {{ v.make }} {{ v.model }} {{ v.trim }}</div>
+          {% if v.engine %}<div class="muted">{{ v.engine }}</div>{% endif %}
+          {% if v.vin %}<div class="muted">VIN: {{ v.vin }}</div>{% endif %}
+          <form method="post" action="/garage/delete/{{ v.id }}" onsubmit="return confirm('Remove {{ v.nickname }} from your garage?');">
+            <button type="submit" class="btn-delete">Remove</button>
+          </form>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="muted">No saved vehicles yet.</p>
+  {% endif %}
+{% endblock %}

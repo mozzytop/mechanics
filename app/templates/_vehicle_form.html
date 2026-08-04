@@ -1,0 +1,89 @@
+{% macro vehicle_fields(saved_vehicles, prefill={}) %}
+<div class="vehicle-block">
+  <div class="saved-vehicles">
+    {% for v in saved_vehicles %}
+      <button type="button" class="vehicle-card" data-vehicle-id="{{ v.id }}"
+              onclick="selectSavedVehicle({{ v.id }})">
+        🚗 {{ v.nickname }}
+      </button>
+    {% endfor %}
+    <a class="vehicle-card vehicle-card-add" href="/garage">+ Add new vehicle</a>
+  </div>
+
+  <input type="hidden" name="saved_vehicle_id" id="saved_vehicle_id" value="">
+
+  <div class="manual-entry" id="manual-entry">
+    <div class="entry-toggle">
+      <label><input type="radio" name="entry_mode" value="vin" checked onchange="toggleEntryMode()"> VIN</label>
+      <label><input type="radio" name="entry_mode" value="ymm" onchange="toggleEntryMode()"> Year / Make / Model</label>
+    </div>
+
+    <div id="vin-fields" class="field-group">
+      <label for="vin">VIN</label>
+      <input type="text" id="vin" name="vin" maxlength="17" placeholder="e.g. 2HGES16575H123456"
+             value="{{ prefill.get('vin','') if prefill else '' }}">
+    </div>
+
+    <div id="ymm-fields" class="field-group" style="display:none;">
+      <div class="field-row">
+        <div>
+          <label for="year">Year</label>
+          <input type="text" id="year" name="year" placeholder="2015" value="{{ prefill.get('year','') if prefill else '' }}">
+        </div>
+        <div>
+          <label for="make">Make</label>
+          <input type="text" id="make" name="make" placeholder="Honda" value="{{ prefill.get('make','') if prefill else '' }}">
+        </div>
+        <div>
+          <label for="model">Model</label>
+          <input type="text" id="model" name="model" placeholder="Civic" value="{{ prefill.get('model','') if prefill else '' }}">
+        </div>
+      </div>
+      <div class="field-row">
+        <div>
+          <label for="trim">Trim</label>
+          <input type="text" id="trim" name="trim" placeholder="LX" value="{{ prefill.get('trim','') if prefill else '' }}">
+        </div>
+        <div>
+          <label for="engine">Engine</label>
+          <input type="text" id="engine" name="engine" placeholder="1.8L R18Z1" value="{{ prefill.get('engine','') if prefill else '' }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const SAVED_VEHICLES = {{ saved_vehicles | tojson }};
+
+  function toggleEntryMode() {
+    const mode = document.querySelector('input[name="entry_mode"]:checked').value;
+    document.getElementById('vin-fields').style.display = mode === 'vin' ? 'block' : 'none';
+    document.getElementById('ymm-fields').style.display = mode === 'ymm' ? 'block' : 'none';
+    document.getElementById('saved_vehicle_id').value = '';
+    document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
+  }
+
+  function selectSavedVehicle(id) {
+    document.getElementById('saved_vehicle_id').value = id;
+    document.querySelectorAll('.vehicle-card').forEach(c => c.classList.remove('selected'));
+    const btn = document.querySelector(`.vehicle-card[data-vehicle-id="${id}"]`);
+    if (btn) btn.classList.add('selected');
+
+    // Move focus straight to the part/code input, per the "quick click" flow.
+    const next = document.getElementById('primary-input');
+    if (next) next.focus();
+  }
+
+  // If Year/Make/Model were prefilled (e.g. via the "Find these parts"
+  // handoff from the Code Lookup page), default to the manual-entry tab
+  // instead of the empty VIN tab.
+  (function () {
+    const yearField = document.getElementById('year');
+    if (yearField && yearField.value) {
+      document.querySelector('input[name="entry_mode"][value="ymm"]').checked = true;
+      toggleEntryMode();
+    }
+  })();
+</script>
+{% endmacro %}

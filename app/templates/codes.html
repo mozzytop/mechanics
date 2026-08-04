@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% import "_vehicle_form.html" as vf %}
+
+{% block title %}Code Lookup — Virtual Mechanic{% endblock %}
+
+{% block content %}
+  <h1>OBD-II Code Lookup</h1>
+  <p class="subtitle">Enter your vehicle and a trouble code to see its definition, likely causes, repair videos, and needed parts.</p>
+
+  <form method="post" action="/codes" class="lookup-form">
+    {{ vf.vehicle_fields(saved_vehicles) }}
+
+    <div class="field-group">
+      <label for="code">OBD-II code</label>
+      <input type="text" id="primary-input" name="code" placeholder="e.g. P0420"
+             value="{{ code if code else '' }}" required>
+    </div>
+
+    <button type="submit" class="btn-primary">Look up code</button>
+  </form>
+
+  {% if error %}
+    <div class="banner banner-error">{{ error }}</div>
+  {% endif %}
+
+  {% if code_info %}
+    <div class="code-result">
+      <h2>{{ code_info.code }} <span class="pill">{{ code_info.category }}</span></h2>
+      <p class="code-description">{{ code_info.description }}</p>
+
+      {% if resolved_vehicle %}
+        <p class="resolved-vehicle">
+          For: <strong>{{ resolved_vehicle.year }} {{ resolved_vehicle.make }}
+          {{ resolved_vehicle.model }} {{ resolved_vehicle.trim }} {{ resolved_vehicle.engine }}</strong>
+        </p>
+      {% endif %}
+
+      {% if code_info.likely_causes %}
+        <h3>Likely causes</h3>
+        <ul>
+          {% for cause in code_info.likely_causes %}<li>{{ cause }}</li>{% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if code_info.part_categories %}
+        <h3>Parts that may be needed</h3>
+        <div class="part-chip-row">
+          {% for pc in code_info.part_categories %}
+            <form method="get" action="/" class="part-chip-form">
+              <input type="hidden" name="part" value="{{ pc }}">
+              {% if resolved_vehicle %}
+                <input type="hidden" name="year" value="{{ resolved_vehicle.year }}">
+                <input type="hidden" name="make" value="{{ resolved_vehicle.make }}">
+                <input type="hidden" name="model" value="{{ resolved_vehicle.model }}">
+                <input type="hidden" name="trim" value="{{ resolved_vehicle.trim }}">
+                <input type="hidden" name="engine" value="{{ resolved_vehicle.engine }}">
+              {% endif %}
+              <button type="submit" class="chip-btn">🔎 Find "{{ pc }}"</button>
+            </form>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if videos %}
+        <h3>Repair videos</h3>
+        <div class="video-grid">
+          {% for v in videos %}
+            <a class="video-card" href="{{ v.url }}" target="_blank" rel="noopener">
+              <img src="{{ v.thumbnail }}" alt="{{ v.title }}">
+              <div class="video-title">{{ v.title }}</div>
+              <div class="video-channel">{{ v.channel_title }}</div>
+            </a>
+          {% endfor %}
+        </div>
+      {% elif code_info %}
+        <p class="muted">No videos found (or YOUTUBE_API_KEY not configured).</p>
+      {% endif %}
+    </div>
+  {% endif %}
+{% endblock %}
