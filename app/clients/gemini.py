@@ -22,12 +22,15 @@ Results are cached in SQLite per (vehicle spec + part + location) so a
 repeat lookup costs zero API calls.
 """
 import json
+import logging
 from typing import Optional
 
 import httpx
 
-from app.config import GEMINI_API_KEY, GEMINI_MODEL
+from app.config import GEMINI_MODEL
 from app.database import db_session
+
+logger = logging.getLogger(__name__)
 
 API_BASE = "https://generativelanguage.googleapis.com/v1beta/models"
 
@@ -109,8 +112,8 @@ RESEARCH NOTES:
 {grounded_text}"""
 
 
-async def _call_gemini(payload: dict) -> dict:
-    url = f"{API_BASE}/{GEMINI_MODEL}:generateContent?key={GEMINI_API_KEY}"
+async def _call_gemini(payload: dict, api_key: str) -> dict:
+    url = f"{API_BASE}/{GEMINI_MODEL}:generateContent?key={api_key}"
     async with httpx.AsyncClient(timeout=60) as client:
         resp = await client.post(url, json=payload)
         resp.raise_for_status()
@@ -131,7 +134,12 @@ async def compare_part_sources(
     """Returns a list of structured result rows matching RESULT_SCHEMA's
     'results' array. Returns [] if GEMINI_API_KEY is unset or a call fails,
     so the page can render a friendly empty state instead of crashing."""
-    if not GEMINI_API_KEY:
+    # Read the key at call time (not import time) so HF Spaces secrets
+    # that are injected after module import are picked up.
+    import os
+    api_key = os.getenv("GEMINI_API_KEY", "")
+    if not api_key:
+        logger.warning("GEMINI_API_KEY is not set — skipping part search.")
         return []
 
     vehicle_spec = f"{year} {make} {model} {trim}".strip()
@@ -148,9 +156,10 @@ async def compare_part_sources(
             "contents": [{"role": "user", "parts": [{"text": search_prompt}]}],
             "tools": [{"google_search": {}}, {"google_maps": {}}],
         }
-        grounded_response = await _call_gemini(grounded_payload)
+        grounded_response = await _call_gemini(grounded_payload, api_key)
         grounded_text = _extract_text(grounded_response)
         if not grounded_text.strip():
+            logger.warning("Gemini grounded search returned empty text.")
             return []
 
         # Step 2: structure the grounded findings into forced JSON.
@@ -163,11 +172,15 @@ async def compare_part_sources(
                 "responseSchema": RESULT_SCHEMA,
             },
         }
-        structured_response = await _call_gemini(structuring_payload)
+        structured_response = await _call_gemini(structuring_payload, api_key)
         structured_text = _extract_text(structured_response)
         parsed = json.loads(structured_text) if structured_text else {"results": []}
         results = parsed.get("results", [])
-    except (httpx.HTTPError, json.JSONDecodeError, KeyError):
+    except httpx.HTTPStatusError as e:
+        logger.error("Gemini API HTTP error %s: %s", e.response.status_code, e.response.text[:500])
+        return []
+    except (httpx.HTTPError, json.JSONDecodeError, KeyError) as e:
+        logger.error("Gemini API call failed: %s", e)
         return []
 
     _set_cached(cache_key, results)
