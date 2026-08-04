@@ -2,18 +2,24 @@
 #
 # ZeroGPU requires:
 #   1. A @spaces.GPU-decorated function bound to a Gradio event handler
-#   2. The server to be started via demo.launch() (not raw uvicorn.run()),
-#      because ZeroGPU's watchdog hooks into Gradio's launch lifecycle
+#   2. demo.launch() to be called (triggers ZeroGPU lifecycle hooks)
 #
-# On HF Spaces, we:
-#   - Create a minimal hidden Gradio Blocks with a @spaces.GPU placeholder
-#   - Call demo.launch() to start the server (satisfies ZeroGPU)
-#   - Add our FastAPI routes to Gradio's internal FastAPI app afterward
+# Gradio's demo.launch() starts a Node proxy that serves its own SPA
+# frontend, which would hide our FastAPI/Jinja2 UI. To work around this,
+# we launch Gradio on a sidecar port (7865) — purely to satisfy
+# ZeroGPU — then serve our real FastAPI app on port 7860 (the port
+# HF Spaces exposes to users) with uvicorn.
 #
-# Locally (where spaces/gradio aren't installed), we just run the
-# FastAPI app with uvicorn as usual:
+# Locally (where spaces/gradio aren't installed), just run:
 #     uvicorn main:app --reload
 
+import os
+
+# --- ZeroGPU sidecar ---------------------------------------------------
+# The `spaces` and `gradio` packages are only present in HF's Gradio SDK
+# base image. When available, we launch a minimal Gradio app on a sidecar
+# port to satisfy ZeroGPU's startup watchdog. This has no effect on the
+# actual user-facing app served below on port 7860.
 try:
     import spaces
     import gradio as gr
@@ -29,41 +35,22 @@ try:
         btn = gr.Button(visible=False)
         btn.click(fn=_zerogpu_placeholder, inputs=t, outputs=t)
 
-    # Launch Gradio — this starts the server on port 7860 and satisfies
-    # ZeroGPU's startup check. prevent_thread_lock=True returns control
-    # so we can add our FastAPI routes to Gradio's internal app.
+    # Force Gradio to a sidecar port so its Node proxy doesn't claim
+    # port 7860 (which our FastAPI app needs for the user-facing UI).
+    os.environ["GRADIO_SERVER_PORT"] = "7865"
     demo.launch(
         server_name="0.0.0.0",
-        server_port=7860,
+        server_port=7865,
         prevent_thread_lock=True,
     )
-
-    # Gradio's internal FastAPI app is now available as demo.app.
-    # Add our routes, static files, and initialize the database so all
-    # existing endpoints (/, /codes, /garage, /static/*) work exactly
-    # as before — served through Gradio's server on port 7860.
-    from fastapi.staticfiles import StaticFiles
-
-    from app.database import init_db
-    from app.routers import codes, garage, lookup
-
-    demo.app.mount("/static", StaticFiles(directory="app/static"), name="static")
-    demo.app.include_router(lookup.router)
-    demo.app.include_router(codes.router)
-    demo.app.include_router(garage.router)
-
-    init_db()
-
-    # Keep the process alive — Gradio's server runs in a background thread.
-    import threading
-    threading.Event().wait()
-
 except ImportError:
-    # Local dev — no spaces/gradio installed, just run FastAPI with uvicorn.
-    if __name__ == "__main__":
-        import uvicorn
+    pass
+# -----------------------------------------------------------------------
 
-        from main import app
+# Serve the actual FastAPI app on port 7860 (what HF Spaces exposes).
+if __name__ == "__main__":
+    import uvicorn
 
-        uvicorn.run(app, host="0.0.0.0", port=7860)
+    from main import app
 
+    uvicorn.run(app, host="0.0.0.0", port=7860)
