@@ -1,10 +1,12 @@
-[README.md](https://github.com/user-attachments/files/30720852/README.md)
+[README.md](https://github.com/user-attachments/files/30721138/README.md)
 ---
 title: Virtual Mechanic
 emoji: 🔧
 colorFrom: blue
 colorTo: gray
 sdk: gradio
+sdk_version: "6.21.0"
+python_version: "3.11"
 app_file: app.py
 pinned: false
 ---
