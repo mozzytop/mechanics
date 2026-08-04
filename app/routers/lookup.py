@@ -23,9 +23,9 @@ async def part_lookup_form(
     engine: str = "",
 ):
     return templates.TemplateResponse(
+        request,
         "index.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "default_location": DEFAULT_LOCATION,
             "warnings": missing_keys(),
@@ -86,9 +86,9 @@ async def part_lookup_submit(
             )
 
     return templates.TemplateResponse(
+        request,
         "index.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "default_location": DEFAULT_LOCATION,
             "warnings": missing_keys(),
