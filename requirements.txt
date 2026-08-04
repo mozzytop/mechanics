@@ -1,4 +1,16 @@
-fastapi==0.115.0
+# Pinned to a combination verified to work both standalone AND alongside
+# Hugging Face Spaces' Gradio-SDK base image, which force-installs
+# gradio==6.21.0 (requiring fastapi>=0.115.2,<1.0) on top of this file.
+#
+# IMPORTANT: fastapi is deliberately pinned to 0.115.6, not left open-ended
+# or bumped to latest. Newer fastapi releases pull in starlette>=1.0, and
+# that major starlette version has a breaking change in how it calls
+# Jinja2Templates (passes a `globals` dict into Environment.get_template in
+# a way that isn't hashable), which crashes every templated route with
+# "TypeError: unhashable type: 'dict'". starlette 0.41.3 (pulled in by
+# fastapi 0.115.6) doesn't have this problem. If you ever bump fastapi,
+# retest every page before deploying.
+fastapi==0.115.6
 uvicorn[standard]==0.32.0
 jinja2==3.1.4
 python-dotenv==1.0.1
