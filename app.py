@@ -15,5 +15,30 @@ import uvicorn
 
 from main import app
 
+# --- ZeroGPU watchdog placeholder -------------------------------------
+# If this Space's hardware tier is fixed to ZeroGPU (some Spaces don't
+# offer a CPU-basic option), Hugging Face's `spaces` package runs a
+# startup check that kills the container unless it finds at least one
+# function decorated with @spaces.GPU somewhere in the app - even though
+# this app is plain CRUD with no GPU/ML workload and never calls it.
+#
+# The `spaces` package (and its torch dependency) is only present in HF's
+# build image, force-installed as part of the Gradio SDK base build - it
+# isn't in requirements.txt and isn't needed for local development. This
+# import is wrapped in try/except so running `python app.py` (or
+# `uvicorn main:app --reload`) locally, where `spaces` isn't installed,
+# is unaffected.
+try:
+    import spaces
+
+    @spaces.GPU
+    def _zerogpu_placeholder():
+        """Never called. Exists purely so HF's ZeroGPU watchdog detects at
+        least one @spaces.GPU-decorated function during startup."""
+        return None
+except ImportError:
+    pass
+# ------------------------------------------------------------------------
+
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=7860)
