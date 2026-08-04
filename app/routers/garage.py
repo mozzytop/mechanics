@@ -14,9 +14,9 @@ templates = Jinja2Templates(directory="app/templates")
 @router.get("/garage", response_class=HTMLResponse)
 async def garage_list(request: Request):
     return templates.TemplateResponse(
+        request,
         "garage.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "resolved": None,
             "error": None,
@@ -51,9 +51,9 @@ async def garage_resolve(
         error = f"Could not resolve vehicle: {e}"
 
     return templates.TemplateResponse(
+        request,
         "garage.html",
         {
-            "request": request,
             "saved_vehicles": list_saved_vehicles(),
             "resolved": resolved,
             "error": error,
